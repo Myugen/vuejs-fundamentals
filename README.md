@@ -15,4 +15,6 @@ Topics in this course:
 - [x] Dynamic class styles
 - [x] VueJS computed properties
 
+Browse the [demo here](https://codepen.io/myugen/full/BayaqLJ)
+
 Made with 🍌 in Canary Islands 🇮🇨
