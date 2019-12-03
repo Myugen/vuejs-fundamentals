@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <title>Getting started with VueJS</title>
+  </head>
+  <body>
+    <div id="shopping-list" class="container">
+      <div class="box">
+        <div class="title">
+          <div class="columns">
+            <div class="column is-three-fifths">
+              <h1 class="has-text-weight-bold">
+                {{ header.toLocaleUpperCase() }}
+              </h1>
+            </div>
+            <div v-if="state === 'view'" class="column is-two-fifths">
+              <button
+                class="button is-primary is-pulled-right"
+                @click="changeState('edit')"
+              >
+                <i class="fas fa-edit"></i>&nbsp;
+                <span>Add item</span>
+              </button>
+            </div>
+            <div v-else class="column is-two-fifth">
+              <button
+                class="button is-danger is-pulled-right"
+                @click="changeState('view')"
+              >
+                <i class="fas fa-ban"></i>&nbsp;
+                <span>Cancel</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="subtitle">
+          <div class="columns" v-if="state === 'edit'">
+            <div class="column is-four-fifths">
+              <input
+                class="input"
+                type="text"
+                name="item"
+                id="item"
+                v-model="newItem"
+                placeholder="Add an item"
+                @keyup.enter="saveItem"
+              />
+            </div>
+            <div class="column is-one-fifth">
+              <button
+                class="button is-success is-pulled-right"
+                :disabled="!newItem.length"
+                @click="saveItem"
+              >
+                <i class="fas fa-plus"></i>&nbsp;
+                <span>Save item</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <ul class="subtitle">
+            <li
+              v-for="item in reversedItems"
+              class="is-clickable"
+              :class="[item.purchased ? 'strikethrough has-text-grey' : '']"
+              @click="togglePurchased(item)"
+            >
+              {{ item.label }}
+            </li>
+          </ul>
+          <p v-if="!items.length">
+            The shopping list is empty, add some items!
+          </p>
+        </div>
+      </div>
+      <div class="content">
+        <p class="has-text-centered">Made with 🍌 in Canary Islands 🇮🇨</p>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/bc4d732d15.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>

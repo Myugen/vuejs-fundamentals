@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap");
+
+body,
+input,
+button,
+select,
+textarea {
+  font-family: "IBM Plex Mono", monospace !important;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.is-clickable {
+  cursor: pointer;
+}
